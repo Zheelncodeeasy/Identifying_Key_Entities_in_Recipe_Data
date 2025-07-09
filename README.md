@@ -1,7 +1,5 @@
 # Identifying_Key_Entities_in_Recipe_Data
 
-# CRF Model Conclusion: Recipe Entity Recognition
-
 ---
 
 ## 1. Objective
