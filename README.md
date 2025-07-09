@@ -1,12 +1,10 @@
 # Identifying_Key_Entities_in_Recipe_Data
 
----
 
 ## 1. Objective
 
 To build a **Conditional Random Field (CRF)** model for extracting structured entities — **quantity**, **unit**, and **ingredient** — from unstructured recipe ingredient data.
 
----
 
 ## 2. Summary of Process and Findings
 
@@ -17,7 +15,6 @@ To build a **Conditional Random Field (CRF)** model for extracting structured en
   - **Training set**: 70%  
   - **Validation set**: 30%
 
----
 
 ### b. Exploratory Data Analysis (EDA)
 - Most frequent entities observed:
@@ -28,7 +25,6 @@ To build a **Conditional Random Field (CRF)** model for extracting structured en
   - `quantity` and `unit` → less frequent
 - Visualizations supported these patterns in both training and validation sets.
 
----
 
 ### c. Feature Extraction
 - Custom `word2features` function created using **spaCy**.
@@ -37,13 +33,11 @@ To build a **Conditional Random Field (CRF)** model for extracting structured en
   - Contextual features  
   - Pattern-based indicators (for numbers, units, etc.)
 
----
 
 ### d. Class Weighting
 - **Inverse frequency** method used for class weighting.
 - Additional weight applied to underrepresented classes (`unit`, `quantity`) to reduce model bias.
 
----
 
 ### e. Model Building and Training
 - CRF model configured with:
@@ -53,7 +47,6 @@ To build a **Conditional Random Field (CRF)** model for extracting structured en
   - Enabled **all possible transitions**
 - Model trained on **weighted training data**.
 
----
 
 ## Evaluation Results
 
@@ -62,7 +55,6 @@ To build a **Conditional Random Field (CRF)** model for extracting structured en
 - High **precision**, **recall**, and **f1-score** for all classes
 - Indicates strong learning from the training data
 
----
 
 ### b. Validation Set Performance
 - **Overall Accuracy**: 96.42%
@@ -71,7 +63,6 @@ To build a **Conditional Random Field (CRF)** model for extracting structured en
   - `quantity`: **94.89%**
   - `unit`: **86.87%** (lowest)
 
----
 
 ### c. Confusion Matrix Observations
 - Minimal errors for `ingredient`
@@ -79,7 +70,6 @@ To build a **Conditional Random Field (CRF)** model for extracting structured en
   - `unit` vs `ingredient`
   - `quantity` vs `ingredient`
 
----
 
 ### d. Error Analysis
 - Frequent issues:
@@ -88,7 +78,6 @@ To build a **Conditional Random Field (CRF)** model for extracting structured en
   - **Numeric tokens** like `"1/2"` misclassified due to weak context
 - Indicates that local context alone may be insufficient for perfect classification
 
----
 
 ## 4. Conclusion
 
@@ -96,7 +85,6 @@ To build a **Conditional Random Field (CRF)** model for extracting structured en
 - **Performs well** on `ingredient` and `quantity` classes
 - **Struggles more** with the `unit` class due to ambiguity and low frequency
 
----
 
 ## Final Verdict
 
